@@ -31,7 +31,8 @@ class HashTable
 		int hashFunction(int key); //Creates the hash value that corresponds to the key
 
 		void insert(int key, string value); //Inserts a pair using the key and value. Overrides old values if key is already in use
-		void remove(int key); //Removes value from bucket. If key is not in use, nothing is done
+		void remove(int key);//Removes value from bucket. If key is not in use, nothing is done
+		void updateValue(int key, string value); //Updates value from that key if key is valid
 		int size(); //Returns the current size of the hash table, with all valid pairs
 		string findValue(int key); //Searches for value based on inputted key
 

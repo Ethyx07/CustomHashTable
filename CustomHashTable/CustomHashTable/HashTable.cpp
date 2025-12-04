@@ -83,6 +83,22 @@ void HashTable::remove(int key) {
 	return;
 }
 
+void HashTable::updateValue(int key, string value) {
+	int hashValue = hashFunction(key);
+
+	Pair* currentPair = table[hashValue]; //Gets the first pair in that bucket. Each is linked by the nextPair reference after this
+
+	while (currentPair != nullptr) { //Loops through linked list one by one, if it reaches a currentPair that is null, then the key isnt in the list and message is printed stating update failed
+		if (currentPair->key == key) { //If key matches value is updated
+			currentPair->value = value;
+			cout << "Value has been updated" << endl;
+			return;
+		}
+		currentPair = currentPair->nextPair; //If key doesnt match, it takes the currentPair's next Pair and sets that as the new one.
+	}
+	cout << "Key is not currently used and value cannot be updated" << endl;
+}
+
 int HashTable::size() {
 	return numOfElements; //Number of elements changes when one is inserted and removed. Uses this instead of looping keeps size function as O(1) instead of O(n)
 }
