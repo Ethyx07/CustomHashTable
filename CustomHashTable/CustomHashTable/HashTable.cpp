@@ -172,45 +172,43 @@ int main() {
 	HashTable HT;
 
 	if (HT.isEmpty()) {
-		cout << "Table is empty" << endl;
+		cout << "Table has not been filled" << endl;
 	}
-	
-	HT.insert(10234, "Bobby"); //Testing insert of unique keys and values
-	HT.insert(902, "Sam");
-	HT.insert(1290, "Betty");
-	HT.insert(2304, "Charles");
-	HT.insert(9908, "Anna");
-	HT.insert(12, "Richard");
-	cout << "[Initial Test Table]" << endl;
-	HT.printTable(); //Tests and prints table
 
-	HT.insert(902, "Bondi"); //Testing the logic when a key already being used is replaced
-	HT.insert(9, "Anna"); //Demonstrating how names/values can be the same as others
-	cout << HT.size() << endl;
-	cout << "[Testing Double Up Table]" << endl;
+	HT.insert(9001, "Bob");
+	HT.insert(1234, "Betty");
+	HT.insert(2289, "Andrew");
+	HT.insert(98, "Taylor");
+	HT.insert(1207, "Chantelle");
+	
+	cout << "\n[Insertion Table Test]" << endl;
+	HT.printTable();
+	cout << "Table Size: " << HT.size() << endl;
+
+	HT.remove(1234);
+
+	cout << "\n[Removal Table Test]" << endl;
+	HT.printTable();
+	cout << "Table Size: " << HT.size() << endl;
+
+	HT.updateValue(9001, "Candace");
+	cout << "\n[Updating Table Test]" << endl;
 	HT.printTable();
 
-	cout << "Please remove an item {Type key}" << endl; //Testing the removal function with user input
-	int keyToRemove;
-	cin >> keyToRemove;
-	HT.remove(keyToRemove);
-	cout << "[Testing Remove Table]" << endl;
-	HT.printTable();
-	cout << HT.size() << endl;
-	cout << "Please enter an invalid key {Type key}" << endl; //Testing the remove functionality when a key is invalid
-	cin >> keyToRemove;
-	HT.remove(keyToRemove);
+	cout << "\nGetting you the value for key 98: " << HT.findValue(98) << endl;
 
-	cout << "Please enter a key for a value you are searching for {Type key}" << endl; //Gets key user is searching for
-	int keyToSearch;
-	cin >> keyToSearch;
-	cout << "You searched for " << HT.findValue(keyToSearch) << endl; //Returns value that corresponds to the key searched
+	cout << "\nGetting you all keys in use: " << endl;
+	HT.printAllKeys();
 
-	cout << "Now please enter a key that doesn't exist in the table {Type key}" << endl;
-	cin >> keyToSearch;
-	cout << HT.findValue(keyToSearch) << endl;
+	cout << "\nGetting you all values in use: " << endl;
+	HT.printAllValues();
+
+	cout << "\n[Emptying Table]" << endl;
+	HT.emptyTable();
 	
-
+	if (HT.isEmpty()) {
+		cout << "Table has been emptied" << endl;
+	}
 
 	return 0;
 }
